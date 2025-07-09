@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XSS Penetration Test Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f4f4f4; color: #333; }
+    header { background: #333; color: #fff; padding: 20px; text-align: center; }
+    section { max-width: 900px; margin: 20px auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    footer { text-align: center; padding: 10px; margin-top: 40px; font-size: 0.9em; color: #777; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>XSS Penetration Test Report</h1>
+  </header>
+  <section>
+    <h2>Executive Summary</h2>
+    <p>Cross-Site Scripting (XSS) vulnerability identified in OWASP Juice Shop. This allows malicious scripts to be executed in users' browsers.</p>
+
+    <h2>Vulnerability Details</h2>
+    <ul>
+      <li><strong>Vulnerability:</strong> Cross-Site Scripting (XSS)</li>
+      <li><strong>Risk Level:</strong> Medium</li>
+      <li><strong>Description:</strong> Application fails to sanitize user input, allowing injection of JavaScript code.</li>
+      <li><strong>Evidence:</strong> Payload: <code>&lt;img src=x onerror=alert('XSS')&gt;</code></li>
+      <li><strong>Recommendation:</strong> Implement proper input validation and output encoding.</li>
+    </ul>
+
+    <h2>Steps to Reproduce</h2>
+    <ol>
+      <li>Open OWASP Juice Shop</li>
+      <li>Enter payload in search bar: <code>&lt;img src=x onerror=alert('XSS')&gt;</code></li>
+      <li>Submit and observe alert pop-up</li>
+    </ol>
+    <h2>Evidence / Proof of Concept</h2>
+        <p>The following image shows the successful execution of the injected JavaScript payload resulting in an alert pop-up:</p>
+        <img src="{{ url_for('static', filename='images/xss_alert.png') }}" alt="XSS Proof" style="max-width:100%;">
+
+
+    <h2>Impact & Recommendations</h2>
+    <p>This vulnerability could allow session hijacking, phishing, or redirection to malicious sites. Apply CSP, validate inputs, and encode outputs to mitigate risks.</p>
+
+    <p><em>Report by Richard Jamie Johnson</em></p>
+  </section>
+  <footer>
+    &copy; 2025 Richard Jamie Johnson
+  </footer>
+</body>
+</html>
