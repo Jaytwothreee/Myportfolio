@@ -14,5 +14,9 @@ def coding():
 def pentesting():
     return render_template('pentesting.html')
 
+@app.route('/pentesting/xss')
+def xss_report():
+    return render_template('xss_report.html')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
